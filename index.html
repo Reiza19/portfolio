@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucas Cornu — Développeur Full Stack</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,700;1,300;1,600&display=swap" rel="stylesheet">
+<title>Lucas Cornu — Portfolio Étudiant BTS SIO SLAM</title>
+<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,300;0,700;1,300;1,600&display=swap)" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -197,7 +197,7 @@ h2 {
 h2 em { font-style: italic; font-weight: 300; }
 .sec-desc { font-size: 0.95rem; line-height: 1.75; color: var(--text2); max-width: 500px; margin-bottom: 4rem; }
 
-/* ── ABOUT ── */
+/* ── PRESENTATION ── */
 .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
 .about-text p { font-size: 0.9rem; line-height: 1.85; color: var(--text2); margin-bottom: 1.2rem; }
 .about-text p strong { color: var(--text); font-weight: 600; }
@@ -237,6 +237,71 @@ h2 em { font-style: italic; font-weight: 300; }
   font-size: 0.7rem; color: var(--teal); font-weight: 500;
 }
 .status-pill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); animation: pulse 2s infinite; }
+
+/* ── PARCOURS (TIMELINE) ── */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: ''; position: absolute; left: 6px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--blue), var(--teal));
+  border-radius: 2px;
+}
+.timeline-item {
+  position: relative; padding-bottom: 3rem;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute; left: -2rem; top: 4px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--bg); border: 3px solid var(--blue);
+  box-shadow: 0 0 12px rgba(79,142,247,0.4);
+}
+.timeline-item:nth-child(even) .timeline-dot { border-color: var(--teal); box-shadow: 0 0 12px rgba(45,212,191,0.4); }
+.timeline-date {
+  font-size: 0.68rem; font-weight: 600; color: var(--blue);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.timeline-item:nth-child(even) .timeline-date { color: var(--teal); }
+.timeline-title { font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+.timeline-place { font-size: 0.82rem; color: var(--text2); margin-bottom: 0.6rem; }
+.timeline-desc { font-size: 0.82rem; color: var(--text3); line-height: 1.7; }
+
+/* ── MISSIONS ── */
+.missions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.mission-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 20px; padding: 2rem;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.mission-card:hover {
+  border-color: rgba(79,142,247,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+.mission-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,142,247,0.4), rgba(45,212,191,0.4), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.mission-card:hover::before { opacity: 1; }
+.mission-icon {
+  width: 48px; height: 48px; border-radius: 12px; margin-bottom: 1.2rem;
+  display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+  background: rgba(79,142,247,0.1);
+}
+.mission-type {
+  font-size: 0.65rem; font-weight: 600; color: var(--blue);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem;
+}
+.mission-title { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.mission-company { font-size: 0.8rem; color: var(--teal); margin-bottom: 0.8rem; font-weight: 500; }
+.mission-desc { font-size: 0.82rem; color: var(--text2); line-height: 1.7; margin-bottom: 1.2rem; }
+.mission-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.m-tag {
+  font-size: 0.62rem; padding: 0.22rem 0.65rem; border-radius: 6px;
+  background: rgba(79,142,247,0.08); border: 1px solid rgba(79,142,247,0.2);
+  color: var(--blue2); font-weight: 500;
+}
 
 /* ── SKILLS ── */
 .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
@@ -287,56 +352,6 @@ h2 em { font-style: italic; font-weight: 300; }
 .skill-card:hover .sdot { transform: scale(1.15); }
 .sdot-on  { background: linear-gradient(135deg, var(--blue), var(--teal)); box-shadow: 0 0 6px rgba(79,142,247,0.5); }
 .sdot-off { background: var(--bg3); border: 1px solid var(--border); }
-
-/* ── PROJECTS ── */
-.proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-.proj-card {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: 20px; padding: 2rem; text-decoration: none; color: inherit;
-  display: flex; flex-direction: column;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  position: relative; overflow: hidden;
-}
-.proj-card:hover {
-  border-color: rgba(79,142,247,0.3);
-  transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-}
-.proj-card.featured {
-  grid-column: span 2;
-  background: linear-gradient(145deg, var(--bg2), var(--bg3));
-  flex-direction: row; align-items: flex-end; gap: 3rem;
-}
-.proj-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(79,142,247,0.4), rgba(45,212,191,0.4), transparent);
-  opacity: 0; transition: opacity 0.3s;
-}
-.proj-card:hover::before { opacity: 1; }
-
-.proj-num { font-size: 0.68rem; font-weight: 700; color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.7rem; }
-.proj-name {
-  font-family: 'Fraunces', serif;
-  font-size: 1.4rem; font-weight: 700; color: var(--text);
-  letter-spacing: -0.02em; margin-bottom: 0.7rem; transition: color 0.2s;
-}
-.proj-card.featured .proj-name { font-size: 1.9rem; }
-.proj-card:hover .proj-name { color: var(--blue2); }
-.proj-desc { font-size: 0.82rem; line-height: 1.7; color: var(--text2); margin-bottom: 1.5rem; flex: 1; }
-.proj-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
-.p-tag {
-  font-size: 0.62rem; padding: 0.22rem 0.65rem; border-radius: 6px;
-  background: rgba(79,142,247,0.08); border: 1px solid rgba(79,142,247,0.2);
-  color: var(--blue2); font-weight: 500;
-}
-.proj-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 0.78rem; font-weight: 600; color: var(--text2);
-  transition: color 0.2s; margin-top: auto;
-}
-.proj-link svg { transition: transform 0.2s; }
-.proj-card:hover .proj-link { color: var(--blue2); }
-.proj-card:hover .proj-link svg { transform: translateX(4px); }
 
 /* ── CONTACT ── */
 .contact-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: start; }
@@ -448,9 +463,11 @@ footer {
   .hero-metrics { flex-wrap: wrap; width: 100%; }
   .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
   .skills-grid { grid-template-columns: 1fr 1fr; }
-  .proj-grid { grid-template-columns: 1fr; }
-  .proj-card.featured { grid-column: 1; flex-direction: column; }
+  .missions-grid { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -467,9 +484,10 @@ footer {
     <span class="logo-name">Lucas Cornu</span>
   </div>
   <div class="nav-links">
-    <a href="#about">À propos</a>
-    <a href="#skills">Compétences</a>
-    <a href="#projects">Projets</a>
+    <a href="#presentation">Présentation</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#missions">Missions</a>
+    <a href="#competences">Compétences</a>
     <a href="#contact" class="nav-cta">Contact</a>
   </div>
 </nav>
@@ -478,18 +496,18 @@ footer {
 <section id="hero">
   <div class="hero-badge">
     <span class="badge-dot"></span>
-    Disponible pour de nouvelles missions
+    Étudiant en BTS SIO option SLAM
   </div>
   <h1>
-    Développeur<br>
-    <span class="gradient-text">Full Stack</span><br>
-    <em>& Architecte.</em>
+    Lucas Cornu<br>
+    <span class="gradient-text">Développeur</span><br>
+    <em>en formation.</em>
   </h1>
   <p class="hero-sub">
-    Je conçois et développe des applications web performantes et scalables. 5 ans d'expérience, un souci du détail constant et une passion pour le code bien écrit.
+    Étudiant en 2ème année de BTS SIO option SLAM à Valenciennes. Passionné par le développement d'applications et les nouvelles technologies.
   </p>
   <div class="hero-actions">
-    <a href="#projects" class="btn-primary">
+    <a href="#missions" class="btn-primary">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 3l14 9-14 9V3z"/></svg>
       Voir mes projets
     </a>
@@ -500,35 +518,32 @@ footer {
   </div>
   <div class="hero-metrics">
     <div class="metric">
-      <div class="metric-num">5+</div>
-      <div class="metric-label">Années d'expérience</div>
+      <div class="metric-num">SIO2</div>
+      <div class="metric-label">Année en cours</div>
     </div>
     <div class="metric">
-      <div class="metric-num">32</div>
-      <div class="metric-label">Projets livrés</div>
+      <div class="metric-num">SLAM</div>
+      <div class="metric-label">Option choisie</div>
     </div>
     <div class="metric">
-      <div class="metric-num">14</div>
-      <div class="metric-label">Clients satisfaits</div>
-    </div>
-    <div class="metric">
-      <div class="metric-num">100%</div>
-      <div class="metric-label">Taux de satisfaction</div>
+      <div class="metric-num">2025</div>
+      <div class="metric-label">Obtention diplôme</div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
+<!-- PRÉSENTATION -->
+<section id="presentation">
   <div class="about-layout">
     <div class="reveal">
-      <div class="sec-eyebrow">À propos</div>
-      <h2>Un développeur<br><em>passionné par<br>l'excellence.</em></h2>
-      <div class="sec-desc">Concis, rigoureux, orienté résultat — je m'implique à chaque phase du projet pour garantir qualité et performance.</div>
+      <div class="sec-eyebrow">Présentation</div>
+      <h2>Qui suis-je<br><em>en quelques mots.</em></h2>
+      <div class="sec-desc">Un étudiant motivé, curieux et déterminé à construire une carrière dans le développement informatique.</div>
       <div class="about-text">
-        <p>Fort de <strong>5 ans d'expérience</strong> en développement web et mobile, j'accompagne startups et grands groupes dans la création de produits numériques robustes et évolutifs.</p>
-        <p>Mon approche combine <strong>architecture solide</strong> et attention constante à l'expérience utilisateur. Je code pour aujourd'hui, en pensant à demain.</p>
-        <p>Basé à <strong>Paris</strong>, je travaille en remote avec des équipes internationales et m'adapte à chaque contexte projet.</p>
+        <p>Je m'appelle <strong>Lucas Cornu</strong>, j'ai 20 ans et je suis actuellement en 2ème année de <strong>BTS SIO option SLAM</strong> (Solutions Logicielles et Applications Métiers).</p>
+        <p>Passionné par l'informatique depuis plusieurs années, j'ai choisi cette formation pour approfondir mes compétences en <strong>développement d'applications</strong> et en gestion de bases de données.</p>
+        <p>J'aime relever des défis techniques, apprendre de nouvelles technologies et travailler sur des projets concrets qui ont un impact réel.</p>
+        <p>Mon objectif : devenir un <strong>développeur compétent et polyvalent</strong>, capable de m'adapter aux évolutions du secteur.</p>
       </div>
     </div>
     <div class="reveal rd1">
@@ -537,18 +552,18 @@ footer {
           <div class="avatar">👨‍💻</div>
           <div>
             <div class="about-card-name">Lucas Cornu</div>
-            <div class="about-card-role">Développeur Full Stack · Paris</div>
+            <div class="about-card-role">Étudiant BTS SIO SLAM</div>
           </div>
         </div>
         <div class="about-divider"></div>
         <div class="about-items">
-          <div class="about-item"><span class="about-item-label">📍 Localisation</span><span class="about-item-val">Paris, France</span></div>
-          <div class="about-item"><span class="about-item-label">💼 Type</span><span class="about-item-val">Freelance · CDI</span></div>
+          <div class="about-item"><span class="about-item-label">📍 Localisation</span><span class="about-item-val">Valenciennes, France</span></div>
+          <div class="about-item"><span class="about-item-label">🎓 Formation</span><span class="about-item-val">BTS SIO option SLAM</span></div>
+          <div class="about-item"><span class="about-item-label">📅 Année</span><span class="about-item-val">2ème année (SIO2)</span></div>
           <div class="about-item"><span class="about-item-label">🌍 Langues</span><span class="about-item-val">Français · Anglais</span></div>
-          <div class="about-item"><span class="about-item-label">📅 Expérience</span><span class="about-item-val">Depuis 2019</span></div>
           <div class="about-item">
             <span class="about-item-label">⚡ Statut</span>
-            <span class="status-pill"><span class="status-pill-dot"></span>Disponible</span>
+            <span class="status-pill"><span class="status-pill-dot"></span>En formation</span>
           </div>
         </div>
       </div>
@@ -556,113 +571,189 @@ footer {
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills">
+<!-- PARCOURS -->
+<section id="parcours">
+  <div class="reveal">
+    <div class="sec-eyebrow">Parcours</div>
+    <h2>Mon parcours<br><em>académique.</em></h2>
+    <div class="sec-desc">Les étapes clés de ma formation et de mon évolution dans le domaine de l'informatique.</div>
+  </div>
+  <div class="timeline reveal rd1">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2024 - 2025</div>
+      <div class="timeline-title">BTS SIO option SLAM — 2ème année</div>
+      <div class="timeline-place">Valenciennes</div>
+      <div class="timeline-desc">Approfondissement du développement d'applications, projets professionnels, préparation à l'examen et stages en entreprise.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2023 - 2024</div>
+      <div class="timeline-title">BTS SIO option SLAM — 1ère année</div>
+      <div class="timeline-place">Valenciennes</div>
+      <div class="timeline-desc">Découverte des fondamentaux : algorithmique, programmation, bases de données, réseaux et gestion de projet.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2023</div>
+      <div class="timeline-title">Baccalauréat</div>
+      <div class="timeline-place">Valenciennes</div>
+      <div class="timeline-desc">Obtention du baccalauréat, premier pas vers les études supérieures en informatique.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSIONS / PROJETS -->
+<section id="missions">
+  <div class="reveal">
+    <div class="sec-eyebrow">Missions & Projets</div>
+    <h2>Expériences<br><em>professionnelles.</em></h2>
+    <div class="sec-desc">Stages et projets réalisés dans le cadre de ma formation BTS SIO.</div>
+  </div>
+  <div class="missions-grid">
+    <div class="mission-card reveal">
+      <div class="mission-icon">🏢</div>
+      <div class="mission-type">Stage</div>
+      <div class="mission-title">Stage de 1ère année</div>
+      <div class="mission-company">Entreprise · Valenciennes</div>
+      <div class="mission-desc">Découverte de l'environnement professionnel, participation au développement d'applications internes et maintenance de bases de données.</div>
+      <div class="mission-stack">
+        <span class="m-tag">PHP</span>
+        <span class="m-tag">MySQL</span>
+        <span class="m-tag">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="mission-card reveal rd1">
+      <div class="mission-icon">💻</div>
+      <div class="mission-type">Projet scolaire</div>
+      <div class="mission-title">Application de gestion</div>
+      <div class="mission-company">Projet BTS SIO</div>
+      <div class="mission-desc">Développement d'une application de gestion complète avec interface utilisateur, base de données et fonctionnalités CRUD.</div>
+      <div class="mission-stack">
+        <span class="m-tag">Java</span>
+        <span class="m-tag">MySQL</span>
+        <span class="m-tag">JavaFX</span>
+      </div>
+    </div>
+    <div class="mission-card reveal rd2">
+      <div class="mission-icon">🌐</div>
+      <div class="mission-type">Projet personnel</div>
+      <div class="mission-title">Site web portfolio</div>
+      <div class="mission-company">Projet personnel</div>
+      <div class="mission-desc">Création de ce portfolio pour présenter mes compétences et mes réalisations dans le cadre de ma recherche de stage et d'emploi.</div>
+      <div class="mission-stack">
+        <span class="m-tag">HTML</span>
+        <span class="m-tag">CSS</span>
+        <span class="m-tag">JavaScript</span>
+      </div>
+    </div>
+    <div class="mission-card reveal rd3">
+      <div class="mission-icon">📱</div>
+      <div class="mission-type">Projet scolaire</div>
+      <div class="mission-title">Application mobile</div>
+      <div class="mission-company">Projet BTS SIO</div>
+      <div class="mission-desc">Développement d'une application mobile dans le cadre des travaux pratiques, avec connexion à une API REST.</div>
+      <div class="mission-stack">
+        <span class="m-tag">Android</span>
+        <span class="m-tag">Kotlin</span>
+        <span class="m-tag">API REST</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPÉTENCES -->
+<section id="competences">
   <div class="reveal">
     <div class="sec-eyebrow">Compétences</div>
-    <h2>Stack technique<br><em>maîtrisé de A à Z.</em></h2>
-    <div class="sec-desc">Une expertise complète couvrant le frontend, le backend, les bases de données et l'infrastructure cloud.</div>
+    <h2>Mes compétences<br><em>techniques.</em></h2>
+    <div class="sec-desc">Les technologies et outils que j'ai appris et pratiqués durant ma formation.</div>
   </div>
   <div class="skills-grid">
     <div class="skill-card reveal">
-      <div class="skill-icon blue">⚡</div>
-      <div class="skill-name">Frontend</div>
-      <div class="skill-tags"><span class="s-tag">React</span><span class="s-tag">Next.js</span><span class="s-tag">TypeScript</span><span class="s-tag">Vue 3</span><span class="s-tag">Tailwind</span></div>
-      <div class="skill-level-row">
-        <span class="skill-level-label">Expert</span>
-        <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span></div>
+      <div class="skill-icon blue">💻</div>
+      <div class="skill-name">Langages de programmation</div>
+      <div class="skill-tags">
+        <span class="s-tag">Java</span>
+        <span class="s-tag">Python</span>
+        <span class="s-tag">PHP</span>
+        <span class="s-tag">JavaScript</span>
+        <span class="s-tag">C#</span>
       </div>
-    </div>
-    <div class="skill-card reveal rd1">
-      <div class="skill-icon teal">🛠</div>
-      <div class="skill-name">Backend</div>
-      <div class="skill-tags"><span class="s-tag">Node.js</span><span class="s-tag">Python</span><span class="s-tag">FastAPI</span><span class="s-tag">GraphQL</span></div>
       <div class="skill-level-row">
-        <span class="skill-level-label">Expert</span>
-        <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span></div>
-      </div>
-    </div>
-    <div class="skill-card reveal rd2">
-      <div class="skill-icon purple">🗄</div>
-      <div class="skill-name">Base de données</div>
-      <div class="skill-tags"><span class="s-tag">PostgreSQL</span><span class="s-tag">MongoDB</span><span class="s-tag">Redis</span><span class="s-tag">Prisma</span></div>
-      <div class="skill-level-row">
-        <span class="skill-level-label">Avancé</span>
-        <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span></div>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon orange">☁️</div>
-      <div class="skill-name">Cloud & DevOps</div>
-      <div class="skill-tags"><span class="s-tag">AWS</span><span class="s-tag">Docker</span><span class="s-tag">Kubernetes</span><span class="s-tag">CI/CD</span></div>
-      <div class="skill-level-row">
-        <span class="skill-level-label">Avancé</span>
+        <span class="skill-level-label">Intermédiaire</span>
         <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div>
       </div>
     </div>
     <div class="skill-card reveal rd1">
-      <div class="skill-icon pink">🤖</div>
-      <div class="skill-name">IA & Machine Learning</div>
-      <div class="skill-tags"><span class="s-tag">LangChain</span><span class="s-tag">OpenAI</span><span class="s-tag">RAG</span><span class="s-tag">TensorFlow</span></div>
+      <div class="skill-icon teal">🌐</div>
+      <div class="skill-name">Développement Web</div>
+      <div class="skill-tags">
+        <span class="s-tag">HTML5</span>
+        <span class="s-tag">CSS3</span>
+        <span class="s-tag">JavaScript</span>
+        <span class="s-tag">Bootstrap</span>
+      </div>
       <div class="skill-level-row">
         <span class="skill-level-label">Intermédiaire</span>
         <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div>
       </div>
     </div>
     <div class="skill-card reveal rd2">
-      <div class="skill-icon green">🔧</div>
-      <div class="skill-name">Architecture</div>
-      <div class="skill-tags"><span class="s-tag">Microservices</span><span class="s-tag">DDD</span><span class="s-tag">Event-driven</span></div>
+      <div class="skill-icon purple">🗄</div>
+      <div class="skill-name">Bases de données</div>
+      <div class="skill-tags">
+        <span class="s-tag">MySQL</span>
+        <span class="s-tag">SQL Server</span>
+        <span class="s-tag">phpMyAdmin</span>
+      </div>
       <div class="skill-level-row">
-        <span class="skill-level-label">Expert</span>
-        <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span></div>
+        <span class="skill-level-label">Intermédiaire</span>
+        <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="reveal">
-    <div class="sec-eyebrow">Projets</div>
-    <h2>Travaux<br><em>sélectionnés.</em></h2>
-    <div class="sec-desc">Une sélection de projets récents illustrant mon savoir-faire technique et ma rigueur.</div>
-  </div>
-  <div class="proj-grid">
-    <a href="#" class="proj-card featured reveal">
-      <div>
-        <div class="proj-num">01 — Featured</div>
-        <div class="proj-name">Plateforme Analytics SaaS</div>
-        <div class="proj-desc">Dashboard temps-réel pour visualiser et analyser de gros volumes de données. Architecture microservices, websockets et interface ultra-réactive pour 50k utilisateurs actifs.</div>
-        <div class="proj-stack">
-          <span class="p-tag">Next.js</span><span class="p-tag">Node.js</span><span class="p-tag">PostgreSQL</span><span class="p-tag">Redis</span><span class="p-tag">Docker</span>
-        </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon orange">🛠</div>
+      <div class="skill-name">Outils & IDE</div>
+      <div class="skill-tags">
+        <span class="s-tag">VS Code</span>
+        <span class="s-tag">IntelliJ</span>
+        <span class="s-tag">Eclipse</span>
+        <span class="s-tag">Git</span>
       </div>
-      <div>
-        <div class="proj-link">Voir le projet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="skill-level-row">
+        <span class="skill-level-label">Intermédiaire</span>
+        <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div>
       </div>
-    </a>
-    <a href="#" class="proj-card reveal rd1">
-      <div class="proj-num">02</div>
-      <div class="proj-name">Assistant IA Documentaire</div>
-      <div class="proj-desc">Chatbot RAG sur corpus propriétaire. Réponses contextuelles, intégration Slack.</div>
-      <div class="proj-stack"><span class="p-tag">Python</span><span class="p-tag">LangChain</span><span class="p-tag">FastAPI</span></div>
-      <div class="proj-link">Voir le projet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-    <a href="#" class="proj-card reveal rd2">
-      <div class="proj-num">03</div>
-      <div class="proj-name">App E-commerce Mobile</div>
-      <div class="proj-desc">Application cross-platform iOS & Android, paiement Stripe intégré, 4.8★ App Store.</div>
-      <div class="proj-stack"><span class="p-tag">React Native</span><span class="p-tag">Stripe</span><span class="p-tag">MongoDB</span></div>
-      <div class="proj-link">Voir le projet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
-    <a href="#" class="proj-card reveal rd3">
-      <div class="proj-num">04</div>
-      <div class="proj-name">Auth Service SSO</div>
-      <div class="proj-desc">Service d'authentification centralisé. OAuth 2.0, MFA, gestion des permissions, 99.99% uptime.</div>
-      <div class="proj-stack"><span class="p-tag">Node.js</span><span class="p-tag">OAuth2</span><span class="p-tag">Redis</span></div>
-      <div class="proj-link">Voir le projet <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-    </a>
+    </div>
+    <div class="skill-card reveal rd1">
+      <div class="skill-icon pink">🖥</div>
+      <div class="skill-name">Systèmes & Réseaux</div>
+      <div class="skill-tags">
+        <span class="s-tag">Windows</span>
+        <span class="s-tag">Linux</span>
+        <span class="s-tag">TCP/IP</span>
+        <span class="s-tag">VMware</span>
+      </div>
+      <div class="skill-level-row">
+        <span class="skill-level-label">Débutant</span>
+        <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div>
+      </div>
+    </div>
+    <div class="skill-card reveal rd2">
+      <div class="skill-icon green">📋</div>
+      <div class="skill-name">Gestion de projet</div>
+      <div class="skill-tags">
+        <span class="s-tag">Méthode Agile</span>
+        <span class="s-tag">Trello</span>
+        <span class="s-tag">UML</span>
+        <span class="s-tag">Merise</span>
+      </div>
+      <div class="skill-level-row">
+        <span class="skill-level-label">Débutant</span>
+        <div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -670,28 +761,86 @@ footer {
 <section id="contact">
   <div class="reveal">
     <div class="sec-eyebrow">Contact</div>
-    <h2>Travaillons<br><em>ensemble.</em></h2>
-    <div class="sec-desc">Un projet en tête ? Discutons-en. Je réponds dans les 24h.</div>
+    <h2>Me contacter<br><em>facilement.</em></h2>
+    <div class="sec-desc">Une question, une opportunité de stage ou un projet ? N'hésitez pas à me contacter.</div>
   </div>
   <div class="contact-layout">
     <div class="contact-info-card reveal">
-      <h3>Entrons en contact</h3>
-      <p>Freelance, CDI, mission courte ou longue durée — je m'adapte à vos besoins.</p>
+      <h3>Mes coordonnées</h3>
+      <p>Je suis disponible pour des stages, des alternances ou tout simplement pour échanger sur des projets.</p>
       <div class="c-items">
-        <div class="c-item"><div class="c-icon">✉️</div><div><div class="c-label">Email</div><div class="c-val"><a href="mailto:alexandre@moreau.dev">lucas.cornu1000@gmail.com</a></div></div></div>
-        <div class="c-item"><div class="c-icon">📞</div><div><div class="c-label">Téléphone</div><div class="c-val">+33 7 68 39 47 07</div></div></div>
-        <div class="c-item"><div class="c-icon">📍</div><div><div class="c-label">Localisation</div><div class="c-val">Valenciennes · Remote disponible</div></div></div>
+        <div class="c-item">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-val"><a href="mailto:lucas.cornu1000@gmail.com">lucas.cornu1000@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Téléphone</div>
+            <div class="c-val">+33 7 68 39 47 07</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Localisation</div>
+            <div class="c-val">Valenciennes, France</div>
+          </div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">🎓</div>
+          <div>
+            <div class="c-label">Formation</div>
+            <div class="c-val">BTS SIO SLAM — 2ème année</div>
+          </div>
+        </div>
+      </div>
+      <div class="social-row">
+        <a href="#" class="social-btn">LinkedIn</a>
+        <a href="#" class="social-btn">GitHub</a>
       </div>
     </div>
+    <div class="form-card reveal rd1">
+      <h3>Envoyez-moi un message</h3>
+      <p>Je vous répondrai dans les plus brefs délais.</p>
+      <form>
+        <div class="form-row">
+          <div class="f-group">
+            <label for="name">Nom</label>
+            <input type="text" id="name" placeholder="Votre nom">
+          </div>
+          <div class="f-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="votre@email.com">
+          </div>
+        </div>
+        <div class="form-row single">
+          <div class="f-group">
+            <label for="subject">Sujet</label>
+            <input type="text" id="subject" placeholder="L'objet de votre message">
+          </div>
+        </div>
+        <div class="form-row single">
+          <div class="f-group">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Votre message..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Envoyer le message</button>
+      </form>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-left">© 2026 <strong>Lucas Cornu</strong> — Tous droits réservés</div>
+  <div class="footer-left">© 2025 <strong>Lucas Cornu</strong> — Portfolio BTS SIO SLAM</div>
   <div class="footer-links">
     <a href="#">GitHub</a>
     <a href="#">LinkedIn</a>
-    <a href="#">Twitter</a>
   </div>
 </footer>
 
@@ -703,3 +852,4 @@ footer {
 </script>
 </body>
 </html>
+
