@@ -272,6 +272,7 @@ h2 em { font-style: italic; font-weight: 300; }
   border-radius: 20px; padding: 2rem;
   transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
   position: relative; overflow: hidden;
+  cursor: pointer;
 }
 .mission-card:hover {
   border-color: rgba(79,142,247,0.3);
@@ -284,6 +285,40 @@ h2 em { font-style: italic; font-weight: 300; }
   opacity: 0; transition: opacity 0.3s;
 }
 .mission-card:hover::before { opacity: 1; }
+.mission-screenshots {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+}
+.mission-screenshot-img {
+  width: 80px; height: 60px; object-fit: cover; border-radius: 8px;
+  border: 1px solid var(--border); cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.mission-screenshot-img:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+.mission-add-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 0.8rem; padding: 0.35rem 0.8rem; border-radius: 8px;
+  background: rgba(79,142,247,0.08); border: 1px dashed rgba(79,142,247,0.3);
+  color: var(--blue2); font-size: 0.7rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.mission-add-btn:hover { background: rgba(79,142,247,0.15); border-color: rgba(79,142,247,0.5); }
+.mission-file-input { display: none; }
+/* Lightbox */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+  align-items: center; justify-content: center;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.6); }
+.lightbox-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: background 0.2s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.2); }
 .mission-icon {
   width: 48px; height: 48px; border-radius: 12px; margin-bottom: 1.2rem;
   display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
@@ -354,10 +389,11 @@ h2 em { font-style: italic; font-weight: 300; }
 .sdot-off { background: var(--bg3); border: 1px solid var(--border); }
 
 /* ── CONTACT ── */
-.contact-layout { display: grid; grid-template-columns: 1fr 1.3fr; gap: 5rem; align-items: start; }
+.contact-layout { display: flex; justify-content: center; }
 .contact-info-card {
   background: var(--bg2); border: 1px solid var(--border);
   border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden;
+  max-width: 480px; width: 100%;
 }
 .contact-info-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
@@ -506,16 +542,7 @@ footer {
   <p class="hero-sub">
     Étudiant en 2ème année de BTS SIO option SLAM à Valenciennes. Passionné par le développement d'applications et les nouvelles technologies.
   </p>
-  <div class="hero-actions">
-    <a href="#missions" class="btn-primary">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 3l14 9-14 9V3z"/></svg>
-      Voir mes projets
-    </a>
-    <a href="#contact" class="btn-secondary">
-      Me contacter
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
+
   <div class="hero-metrics">
     <div class="metric">
       <div class="metric-num">SIO2</div>
@@ -525,10 +552,7 @@ footer {
       <div class="metric-num">SLAM</div>
       <div class="metric-label">Option choisie</div>
     </div>
-    <div class="metric">
-      <div class="metric-num">2025</div>
-      <div class="metric-label">Obtention diplôme</div>
-    </div>
+
   </div>
 </section>
 
@@ -611,7 +635,7 @@ footer {
     <div class="sec-desc">Stages et projets réalisés dans le cadre de ma formation BTS SIO.</div>
   </div>
   <div class="missions-grid">
-    <div class="mission-card reveal">
+    <div class="mission-card reveal" onclick="document.getElementById('ss-input-0').click()">
       <div class="mission-icon">🏢</div>
       <div class="mission-type">Stage</div>
       <div class="mission-title">Stage de 1ère année</div>
@@ -622,8 +646,14 @@ footer {
         <span class="m-tag">MySQL</span>
         <span class="m-tag">HTML/CSS</span>
       </div>
+      <div class="mission-screenshots" id="ss-gallery-0"></div>
+      <label class="mission-add-btn" onclick="event.stopPropagation(); document.getElementById('ss-input-0').click()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        Ajouter des screens
+      </label>
+      <input type="file" id="ss-input-0" class="mission-file-input" accept="image/*" multiple onchange="addScreenshots(this, 'ss-gallery-0')">
     </div>
-    <div class="mission-card reveal rd1">
+    <div class="mission-card reveal rd1" onclick="document.getElementById('ss-input-1').click()">
       <div class="mission-icon">💻</div>
       <div class="mission-type">Projet scolaire</div>
       <div class="mission-title">Application de gestion</div>
@@ -634,8 +664,14 @@ footer {
         <span class="m-tag">MySQL</span>
         <span class="m-tag">JavaFX</span>
       </div>
+      <div class="mission-screenshots" id="ss-gallery-1"></div>
+      <label class="mission-add-btn" onclick="event.stopPropagation(); document.getElementById('ss-input-1').click()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        Ajouter des screens
+      </label>
+      <input type="file" id="ss-input-1" class="mission-file-input" accept="image/*" multiple onchange="addScreenshots(this, 'ss-gallery-1')">
     </div>
-    <div class="mission-card reveal rd2">
+    <div class="mission-card reveal rd2" onclick="document.getElementById('ss-input-2').click()">
       <div class="mission-icon">🌐</div>
       <div class="mission-type">Projet personnel</div>
       <div class="mission-title">Site web portfolio</div>
@@ -646,8 +682,14 @@ footer {
         <span class="m-tag">CSS</span>
         <span class="m-tag">JavaScript</span>
       </div>
+      <div class="mission-screenshots" id="ss-gallery-2"></div>
+      <label class="mission-add-btn" onclick="event.stopPropagation(); document.getElementById('ss-input-2').click()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        Ajouter des screens
+      </label>
+      <input type="file" id="ss-input-2" class="mission-file-input" accept="image/*" multiple onchange="addScreenshots(this, 'ss-gallery-2')">
     </div>
-    <div class="mission-card reveal rd3">
+    <div class="mission-card reveal rd3" onclick="document.getElementById('ss-input-3').click()">
       <div class="mission-icon">📱</div>
       <div class="mission-type">Projet scolaire</div>
       <div class="mission-title">Application mobile</div>
@@ -658,6 +700,12 @@ footer {
         <span class="m-tag">Kotlin</span>
         <span class="m-tag">API REST</span>
       </div>
+      <div class="mission-screenshots" id="ss-gallery-3"></div>
+      <label class="mission-add-btn" onclick="event.stopPropagation(); document.getElementById('ss-input-3').click()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        Ajouter des screens
+      </label>
+      <input type="file" id="ss-input-3" class="mission-file-input" accept="image/*" multiple onchange="addScreenshots(this, 'ss-gallery-3')">
     </div>
   </div>
 </section>
@@ -773,7 +821,7 @@ footer {
           <div class="c-icon">✉️</div>
           <div>
             <div class="c-label">Email</div>
-            <div class="c-val"><a href="mailto:lucas.cornu1000@gmail.com">lucas.cornu1000@gmail.com</a></div>
+            <div class="c-val"><a href="mailto:lucas.cornu@email.com">lucas.cornu@email.com</a></div>
           </div>
         </div>
         <div class="c-item">
@@ -798,39 +846,6 @@ footer {
           </div>
         </div>
       </div>
-      <div class="social-row">
-        <a href="#" class="social-btn">LinkedIn</a>
-        <a href="#" class="social-btn">GitHub</a>
-      </div>
-    </div>
-    <div class="form-card reveal rd1">
-      <h3>Envoyez-moi un message</h3>
-      <p>Je vous répondrai dans les plus brefs délais.</p>
-      <form>
-        <div class="form-row">
-          <div class="f-group">
-            <label for="name">Nom</label>
-            <input type="text" id="name" placeholder="Votre nom">
-          </div>
-          <div class="f-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="votre@email.com">
-          </div>
-        </div>
-        <div class="form-row single">
-          <div class="f-group">
-            <label for="subject">Sujet</label>
-            <input type="text" id="subject" placeholder="L'objet de votre message">
-          </div>
-        </div>
-        <div class="form-row single">
-          <div class="f-group">
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Votre message..."></textarea>
-          </div>
-        </div>
-        <button type="submit" class="btn-submit">Envoyer le message</button>
-      </form>
     </div>
   </div>
 </section>
@@ -838,18 +853,35 @@ footer {
 <!-- FOOTER -->
 <footer>
   <div class="footer-left">© 2025 <strong>Lucas Cornu</strong> — Portfolio BTS SIO SLAM</div>
-  <div class="footer-links">
-    <a href="#">GitHub</a>
-    <a href="#">LinkedIn</a>
-  </div>
 </footer>
 
-<script>
-  const io = new IntersectionObserver(es => {
-    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.07 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-</script>
-</body>
-</html>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function addScreenshots(input, galleryId) {
+    const gallery = document.getElementById(galleryId);
+    Array.from(input.files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = document.createElement('img');
+        img.src = e.target.result;
+        img.className = 'mission-screenshot-img';
+        img.onclick = function(ev) { ev.stopPropagation(); openLightbox(e.target.result); };
+        gallery.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+    input.value = '';
+  }
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  const io = new In
