@@ -374,16 +374,19 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<script>
-const STORAGE_KEY = 'portfolio_screenshots_v2';
+<!-- SCREENSHOTS DATA - Les images sont sauvegardées ici directement dans le fichier -->
+<script id="screenshots-data" type="application/json">{}</script>
 
-function getSaved() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { return {}; }
-}
-function setSaved(data) {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {
-    alert('Images trop lourdes pour être sauvegardées. Essaie avec des images plus petites.');
-  }
+<script>
+// ── SYSTÈME DE SAUVEGARDE DANS LE FICHIER HTML ──
+// Les images sont encodées en base64 et sauvegardées directement dans ce fichier.
+// Résultat : les photos restent permanentes peu importe le navigateur ou l'ordinateur.
+
+function getDataStore() {
+  try {
+    const el = document.getElementById('screenshots-data');
+    return JSON.parse(el.textContent || '{}');
+  } catch(e) { return {}; }
 }
 
 function renderScreenshot(cardIndex, src) {
@@ -403,20 +406,12 @@ function renderScreenshot(cardIndex, src) {
   btn.onclick = (e) => {
     e.stopPropagation();
     wrapper.remove();
-    persistGallery(cardIndex);
+    saveAndDownload();
   };
 
   wrapper.appendChild(img);
   wrapper.appendChild(btn);
   gallery.appendChild(wrapper);
-}
-
-function persistGallery(cardIndex) {
-  const gallery = document.getElementById('ss-gallery-' + cardIndex);
-  const imgs = Array.from(gallery.querySelectorAll('img')).map(i => i.src);
-  const saved = getSaved();
-  saved[cardIndex] = imgs;
-  setSaved(saved);
 }
 
 function addScreenshots(input, cardIndex) {
@@ -427,11 +422,55 @@ function addScreenshots(input, cardIndex) {
     reader.onload = function(e) {
       renderScreenshot(cardIndex, e.target.result);
       loaded++;
-      if (loaded === files.length) persistGallery(cardIndex);
+      if (loaded === files.length) saveAndDownload();
     };
     reader.readAsDataURL(file);
   });
   input.value = '';
+}
+
+function saveAndDownload() {
+  // Récupère toutes les images actuelles des 4 projets
+  const data = {};
+  for (let i = 0; i <= 3; i++) {
+    const gallery = document.getElementById('ss-gallery-' + i);
+    data[i] = Array.from(gallery.querySelectorAll('img')).map(img => img.src);
+  }
+
+  // Récupère le HTML complet de la page
+  let html = document.documentElement.outerHTML;
+
+  // Injecte les données images dans la balise script dédiée
+  const jsonStr = JSON.stringify(data);
+  html = html.replace(
+    /<script id="screenshots-data" type="application\/json">.*?<\/script>/s,
+    `<script id="screenshots-data" type="application/json">${jsonStr}<\/script>`
+  );
+
+  // Crée un fichier HTML à télécharger avec les images intégrées
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'portfolio.html';
+  a.click();
+  URL.revokeObjectURL(url);
+
+  // Informe l'utilisateur
+  showSaveNotification();
+}
+
+function showSaveNotification() {
+  let notif = document.getElementById('save-notif');
+  if (!notif) {
+    notif = document.createElement('div');
+    notif.id = 'save-notif';
+    notif.style.cssText = 'position:fixed;bottom:2rem;right:2rem;z-index:9999;background:linear-gradient(135deg,#4f8ef7,#2dd4bf);color:#fff;padding:0.9rem 1.4rem;border-radius:12px;font-size:0.82rem;font-weight:600;font-family:sans-serif;box-shadow:0 8px 30px rgba(79,142,247,0.4);display:flex;align-items:center;gap:10px;transition:opacity 0.4s';
+    document.body.appendChild(notif);
+  }
+  notif.innerHTML = '✅ Fichier sauvegardé — remplace ton ancien portfolio.html par ce fichier !';
+  notif.style.opacity = '1';
+  setTimeout(() => { notif.style.opacity = '0'; }, 5000);
 }
 
 function openLightbox(src) {
@@ -442,10 +481,10 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
 }
 
-// Charger les screenshots sauvegardés
-const saved = getSaved();
+// Charger les images au démarrage depuis les données intégrées dans le fichier
+const savedData = getDataStore();
 for (let i = 0; i <= 3; i++) {
-  (saved[i] || []).forEach(src => renderScreenshot(i, src));
+  (savedData[i] || []).forEach(src => renderScreenshot(i, src));
 }
 
 // Animations reveal
