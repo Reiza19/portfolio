@@ -97,7 +97,7 @@ h2 em{font-style:italic;font-weight:300}
 .ss-wrapper:hover .ss-delete-btn{opacity:1}
 .mission-add-btn{display:inline-flex;align-items:center;gap:6px;margin-top:0.8rem;padding:0.35rem 0.8rem;border-radius:8px;background:rgba(79,142,247,0.08);border:1px dashed rgba(79,142,247,0.3);color:var(--blue2);font-size:0.7rem;font-weight:600;cursor:pointer;transition:background 0.2s,border-color 0.2s}
 .mission-add-btn:hover{background:rgba(79,142,247,0.15);border-color:rgba(79,142,247,0.5)}
-.mission-file-input{display:none}
+
 /* LIGHTBOX */
 .lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center}
 .lightbox.active{display:flex}
@@ -246,6 +246,7 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
     <div class="sec-desc">Stages et projets réalisés dans le cadre de ma formation BTS SIO.</div>
   </div>
   <div class="missions-grid">
+
     <div class="mission-card reveal">
       <div class="mission-icon">🏢</div>
       <div class="mission-type">Stage</div>
@@ -253,13 +254,14 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
       <div class="mission-company">Entreprise · Valenciennes</div>
       <div class="mission-desc">Découverte de l'environnement professionnel, participation au changement et maintenance de bases de données.</div>
       <div class="mission-stack"><span class="m-tag">PHP</span><span class="m-tag">MySQL</span><span class="m-tag">HTML/CSS</span></div>
-      <div class="mission-screenshots" id="ss-gallery-0"></div>
-      <label class="mission-add-btn" onclick="document.getElementById('ss-input-0').click()">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-        Ajouter des screens
-      </label>
-      <input type="file" id="ss-input-0" class="mission-file-input" accept="image/*" multiple onchange="addScreenshots(this,0)">
+      <div class="mission-screenshots">
+        <!-- PROJET 1 — Ajoute tes screens dans images/projet1/ -->
+        <div class="ss-wrapper"><img src="images/projet1/screen1.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ss-wrapper"><img src="images/projet1/screen2.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ss-wrapper"><img src="images/projet1/screen3.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+      </div>
     </div>
+
     <div class="mission-card reveal rd1">
       <div class="mission-icon">💻</div>
       <div class="mission-type">Stage</div>
@@ -267,13 +269,14 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
       <div class="mission-company">Entreprise · Valenciennes</div>
       <div class="mission-desc">Développement d'une application de gestion complète avec interface utilisateur, base de données et fonctionnalités CRUD.</div>
       <div class="mission-stack"><span class="m-tag">Java</span><span class="m-tag">MySQL</span><span class="m-tag">JavaFX</span></div>
-      <div class="mission-screenshots" id="ss-gallery-1"></div>
-      <label class="mission-add-btn" onclick="document.getElementById('ss-input-1').click()">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-        Ajouter des screens
-      </label>
-      <input type="file" id="ss-input-1" class="mission-file-input" accept="image/*" multiple onchange="addScreenshots(this,1)">
+      <div class="mission-screenshots">
+        <!-- PROJET 2 — Ajoute tes screens dans images/projet2/ -->
+        <div class="ss-wrapper"><img src="images/projet2/screen1.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ss-wrapper"><img src="images/projet2/screen2.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ss-wrapper"><img src="images/projet2/screen3.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+      </div>
     </div>
+
     <div class="mission-card reveal rd2">
       <div class="mission-icon">🌐</div>
       <div class="mission-type">Projet personnel</div>
@@ -281,13 +284,14 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
       <div class="mission-company">Projet personnel</div>
       <div class="mission-desc">Création de ce portfolio pour présenter mes compétences et mes réalisations dans le cadre de ma recherche de stage et d'emploi.</div>
       <div class="mission-stack"><span class="m-tag">HTML</span><span class="m-tag">CSS</span><span class="m-tag">JavaScript</span></div>
-      <div class="mission-screenshots" id="ss-gallery-2"></div>
-      <label class="mission-add-btn" onclick="document.getElementById('ss-input-2').click()">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-        Ajouter des screens
-      </label>
-      <input type="file" id="ss-input-2" class="mission-file-input" accept="image/*" multiple onchange="addScreenshots(this,2)">
+      <div class="mission-screenshots">
+        <!-- PROJET 3 — Ajoute tes screens dans images/projet3/ -->
+        <div class="ss-wrapper"><img src="images/projet3/screen1.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ss-wrapper"><img src="images/projet3/screen2.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ss-wrapper"><img src="images/projet3/screen3.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+      </div>
     </div>
+
     <div class="mission-card reveal rd3">
       <div class="mission-icon">📱</div>
       <div class="mission-type">Projet scolaire</div>
@@ -295,13 +299,14 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
       <div class="mission-company">Projet BTS SIO</div>
       <div class="mission-desc">Développement d'une application mobile dans le cadre des travaux pratiques, avec connexion à une API REST.</div>
       <div class="mission-stack"><span class="m-tag">Flutter</span><span class="m-tag">Dart</span><span class="m-tag">API REST</span></div>
-      <div class="mission-screenshots" id="ss-gallery-3"></div>
-      <label class="mission-add-btn" onclick="document.getElementById('ss-input-3').click()">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-        Ajouter des screens
-      </label>
-      <input type="file" id="ss-input-3" class="mission-file-input" accept="image/*" multiple onchange="addScreenshots(this,3)">
+      <div class="mission-screenshots">
+        <!-- PROJET 4 — Ajoute tes screens dans images/projet4/ -->
+        <div class="ss-wrapper"><img src="images/projet4/screen1.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ss-wrapper"><img src="images/projet4/screen2.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+        <div class="ss-wrapper"><img src="images/projet4/screen3.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -374,105 +379,10 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
   <img id="lightbox-img" src="" alt="">
 </div>
 
-<!-- SCREENSHOTS DATA - Les images sont sauvegardées ici directement dans le fichier -->
-<script id="screenshots-data" type="application/json">{}</script>
+
+
 
 <script>
-// ── SYSTÈME DE SAUVEGARDE DANS LE FICHIER HTML ──
-// Les images sont encodées en base64 et sauvegardées directement dans ce fichier.
-// Résultat : les photos restent permanentes peu importe le navigateur ou l'ordinateur.
-
-function getDataStore() {
-  try {
-    const el = document.getElementById('screenshots-data');
-    return JSON.parse(el.textContent || '{}');
-  } catch(e) { return {}; }
-}
-
-function renderScreenshot(cardIndex, src) {
-  const gallery = document.getElementById('ss-gallery-' + cardIndex);
-  const wrapper = document.createElement('div');
-  wrapper.className = 'ss-wrapper';
-
-  const img = document.createElement('img');
-  img.src = src;
-  img.className = 'mission-screenshot-img';
-  img.onclick = () => openLightbox(src);
-
-  const btn = document.createElement('button');
-  btn.className = 'ss-delete-btn';
-  btn.innerHTML = '✕';
-  btn.title = 'Supprimer cette image';
-  btn.onclick = (e) => {
-    e.stopPropagation();
-    wrapper.remove();
-    saveAndDownload();
-  };
-
-  wrapper.appendChild(img);
-  wrapper.appendChild(btn);
-  gallery.appendChild(wrapper);
-}
-
-function addScreenshots(input, cardIndex) {
-  const files = Array.from(input.files);
-  let loaded = 0;
-  files.forEach(file => {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      renderScreenshot(cardIndex, e.target.result);
-      loaded++;
-      if (loaded === files.length) saveAndDownload();
-    };
-    reader.readAsDataURL(file);
-  });
-  input.value = '';
-}
-
-function saveAndDownload() {
-  // Récupère toutes les images actuelles des 4 projets
-  const data = {};
-  for (let i = 0; i <= 3; i++) {
-    const gallery = document.getElementById('ss-gallery-' + i);
-    data[i] = Array.from(gallery.querySelectorAll('img')).map(img => img.src);
-  }
-
-  // Récupère le HTML complet de la page
-  let html = document.documentElement.outerHTML;
-
-  // Injecte les données images dans la balise script dédiée
-  const jsonStr = JSON.stringify(data);
-  html = html.replace(
-    /<script id="screenshots-data" type="application\/json">.*?<\/script>/s,
-    `<script id="screenshots-data" type="application/json">${jsonStr}<\/script>`
-  );
-
-  // Crée un fichier HTML à télécharger avec les images intégrées
-  const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'portfolio.html';
-  a.click();
-  URL.revokeObjectURL(url);
-
-  // Informe l'utilisateur
-  showSaveNotification();
-}
-
-function showSaveNotification() {
-  let notif = document.getElementById('save-notif');
-  if (!notif) {
-    notif = document.createElement('div');
-    notif.id = 'save-notif';
-    notif.style.cssText = 'position:fixed;bottom:2rem;right:2rem;z-index:9999;background:linear-gradient(135deg,#4f8ef7,#2dd4bf);color:#fff;padding:0.9rem 1.4rem;border-radius:12px;font-size:0.82rem;font-weight:600;font-family:sans-serif;box-shadow:0 8px 30px rgba(79,142,247,0.4);display:flex;align-items:center;gap:10px;transition:opacity 0.4s';
-    document.body.appendChild(notif);
-  }
-  notif.innerHTML = '✅ Fichier sauvegardé — remplace ton ancien portfolio.html par ce fichier !';
-  notif.style.opacity = '1';
-  setTimeout(() => { notif.style.opacity = '0'; }, 5000);
-}
-
 function openLightbox(src) {
   document.getElementById('lightbox-img').src = src;
   document.getElementById('lightbox').classList.add('active');
@@ -480,14 +390,6 @@ function openLightbox(src) {
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('active');
 }
-
-// Charger les images au démarrage depuis les données intégrées dans le fichier
-const savedData = getDataStore();
-for (let i = 0; i <= 3; i++) {
-  (savedData[i] || []).forEach(src => renderScreenshot(i, src));
-}
-
-// Animations reveal
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: 0.12 });
