@@ -76,52 +76,70 @@ h2 em{font-style:italic;font-weight:300}
 .timeline-title{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:0.3rem}
 .timeline-place{font-size:0.82rem;color:var(--text2);margin-bottom:0.6rem}
 .timeline-desc{font-size:0.82rem;color:var(--text3);line-height:1.7}
+
+/* ── MISSIONS ── */
 .missions-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
 .mission-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;position:relative;overflow:hidden}
 .mission-card:hover{border-color:rgba(79,142,247,0.3);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
 .mission-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(79,142,247,0.4),rgba(45,212,191,0.4),transparent);opacity:0;transition:opacity 0.3s}
 .mission-card:hover::before{opacity:1}
-.mission-icon{width:48px;height:48px;border-radius:12px;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(79,142,247,0.1)}
-.mission-type{font-size:0.65rem;font-weight:600;color:var(--blue);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.5rem}
-.mission-title{font-size:1.15rem;font-weight:700;color:var(--text);margin-bottom:0.5rem}
-.mission-company{font-size:0.8rem;color:var(--teal);margin-bottom:0.8rem;font-weight:500}
-.mission-desc{font-size:0.82rem;color:var(--text2);line-height:1.7;margin-bottom:1.2rem}
-.mission-stack{display:flex;flex-wrap:wrap;gap:0.4rem}
+.mission-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.4rem}
+.mission-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.5rem}
+.mission-icon-wrap.stage{background:rgba(79,142,247,0.12)}
+.mission-icon-wrap.java{background:rgba(251,146,60,0.12)}
+.mission-icon-wrap.web{background:rgba(45,212,191,0.12)}
+.mission-icon-wrap.mobile{background:rgba(139,92,246,0.12)}
+.mission-meta{flex:1}
+.mission-type{font-size:0.62rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem}
+.mission-type.stage{color:var(--blue)}
+.mission-type.scolaire{color:var(--teal)}
+.mission-title{font-size:1.05rem;font-weight:700;color:var(--text);line-height:1.25;margin-bottom:0.25rem}
+.mission-company{font-size:0.75rem;color:var(--text3);font-weight:500}
+.mission-highlights{display:flex;flex-direction:column;gap:0.55rem;margin-bottom:1.2rem}
+.highlight-row{display:flex;align-items:flex-start;gap:0.6rem;font-size:0.8rem;color:var(--text2);line-height:1.5}
+.highlight-icon{font-size:0.85rem;flex-shrink:0;margin-top:1px}
+.highlight-row strong{color:var(--text);font-weight:600}
+.mission-stack{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:auto}
 .m-tag{font-size:0.62rem;padding:0.22rem 0.65rem;border-radius:6px;background:rgba(79,142,247,0.08);border:1px solid rgba(79,142,247,0.2);color:var(--blue2);font-weight:500}
-/* SCREENSHOTS */
 .mission-screenshots{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem}
 .ss-wrapper{position:relative;display:inline-block;border-radius:8px;overflow:hidden}
 .mission-screenshot-img{width:80px;height:60px;object-fit:cover;display:block;border:1px solid var(--border);cursor:pointer;transition:transform 0.2s,box-shadow 0.2s}
 .ss-wrapper:hover .mission-screenshot-img{transform:scale(1.03);box-shadow:0 4px 12px rgba(0,0,0,0.5)}
-.ss-delete-btn{position:absolute;top:3px;right:3px;width:18px;height:18px;border-radius:50%;background:rgba(220,38,38,0.9);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transition:opacity 0.2s;border:none;line-height:1}
-.ss-wrapper:hover .ss-delete-btn{opacity:1}
-.mission-add-btn{display:inline-flex;align-items:center;gap:6px;margin-top:0.8rem;padding:0.35rem 0.8rem;border-radius:8px;background:rgba(79,142,247,0.08);border:1px dashed rgba(79,142,247,0.3);color:var(--blue2);font-size:0.7rem;font-weight:600;cursor:pointer;transition:background 0.2s,border-color 0.2s}
-.mission-add-btn:hover{background:rgba(79,142,247,0.15);border-color:rgba(79,142,247,0.5)}
 
-/* LIGHTBOX */
+/* ── LIGHTBOX ── */
 .lightbox{display:none;position:fixed;inset:0;z-index:999;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);align-items:center;justify-content:center}
 .lightbox.active{display:flex}
 .lightbox img{max-width:90vw;max-height:90vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
 .lightbox-close{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:1.2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s}
 .lightbox-close:hover{background:rgba(255,255,255,0.2)}
-/* SKILLS */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-.skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:border-color 0.3s,transform 0.3s,box-shadow 0.3s;position:relative;overflow:hidden}
-.skill-card:hover{border-color:rgba(79,142,247,0.3);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.3),0 0 0 1px rgba(79,142,247,0.1)}
-.skill-card::after{content:'';position:absolute;inset:0;border-radius:16px;background:linear-gradient(135deg,rgba(79,142,247,0.04),rgba(45,212,191,0.02));opacity:0;transition:opacity 0.3s}
-.skill-card:hover::after{opacity:1}
-.skill-icon{width:40px;height:40px;border-radius:10px;margin-bottom:1.2rem;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
-.skill-icon.blue{background:rgba(79,142,247,0.12)}.skill-icon.teal{background:rgba(45,212,191,0.12)}.skill-icon.purple{background:rgba(139,92,246,0.12)}.skill-icon.orange{background:rgba(251,146,60,0.12)}.skill-icon.pink{background:rgba(236,72,153,0.12)}.skill-icon.green{background:rgba(74,222,128,0.12)}
-.skill-name{font-size:0.92rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
-.skill-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1.4rem}
-.s-tag{font-size:0.65rem;padding:0.22rem 0.6rem;border-radius:5px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-weight:500}
-.skill-level-row{display:flex;align-items:center;justify-content:space-between}
-.skill-level-label{font-size:0.65rem;color:var(--text3)}
-.skill-dots{display:flex;gap:5px}
-.sdot{width:10px;height:10px;border-radius:50%;transition:transform 0.2s}
-.skill-card:hover .sdot{transform:scale(1.15)}
-.sdot-on{background:linear-gradient(135deg,var(--blue),var(--teal));box-shadow:0 0 6px rgba(79,142,247,0.5)}
-.sdot-off{background:var(--bg3);border:1px solid var(--border)}
+
+/* ── COMPÉTENCES ── */
+.skills-section-inner{display:grid;grid-template-columns:220px 1fr;gap:3rem;align-items:start}
+.skills-nav{display:flex;flex-direction:column;gap:0.4rem;position:sticky;top:90px}
+.skill-nav-btn{display:flex;align-items:center;gap:10px;padding:0.75rem 1rem;border-radius:10px;background:transparent;border:1px solid transparent;cursor:pointer;transition:all 0.2s;text-align:left;width:100%;color:var(--text2);font-size:0.82rem;font-weight:500;font-family:'Plus Jakarta Sans',sans-serif}
+.skill-nav-btn:hover{background:var(--glass2);color:var(--text);border-color:var(--border)}
+.skill-nav-btn.active{background:rgba(79,142,247,0.1);border-color:rgba(79,142,247,0.3);color:var(--blue2)}
+.skill-nav-icon{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem;flex-shrink:0}
+.skill-nav-btn.active .skill-nav-icon{background:rgba(79,142,247,0.15)}
+.skill-nav-btn:not(.active) .skill-nav-icon{background:var(--bg3)}
+.skill-panel{display:none}
+.skill-panel.active{display:block}
+.skill-panel-title{font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:0.4rem}
+.skill-panel-desc{font-size:0.83rem;color:var(--text2);line-height:1.7;margin-bottom:2rem;max-width:480px}
+.skill-items{display:flex;flex-direction:column;gap:1rem}
+.skill-row{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1rem 1.2rem;transition:border-color 0.2s}
+.skill-row:hover{border-color:rgba(79,142,247,0.25)}
+.skill-row-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem}
+.skill-row-name{font-size:0.88rem;font-weight:600;color:var(--text)}
+.skill-row-level{font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 9px;border-radius:100px}
+.level-debutant{background:rgba(251,146,60,0.12);color:#fb923c;border:1px solid rgba(251,146,60,0.25)}
+.level-intermediaire{background:rgba(79,142,247,0.1);color:var(--blue2);border:1px solid rgba(79,142,247,0.25)}
+.level-avance{background:rgba(45,212,191,0.1);color:var(--teal);border:1px solid rgba(45,212,191,0.25)}
+.skill-bar-bg{height:3px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.skill-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--teal));transition:width 0.7s cubic-bezier(0.4,0,0.2,1)}
+.skill-row-tags{display:flex;flex-wrap:wrap;gap:0.35rem;margin-top:0.7rem}
+.sr-tag{font-size:0.62rem;padding:0.2rem 0.55rem;border-radius:5px;background:var(--bg3);border:1px solid var(--border);color:var(--text3);font-weight:500}
+
 /* CONTACT */
 .contact-layout{display:flex;justify-content:center}
 .contact-info-card{max-width:520px;width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden}
@@ -143,8 +161,8 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
 .reveal.in{opacity:1;transform:none}
 .rd1{transition-delay:0.1s}.rd2{transition-delay:0.2s}.rd3{transition-delay:0.3s}
 @keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@media(max-width:900px){.nav-links{display:none}.hero-metrics{flex-wrap:wrap;width:100%}.about-layout{grid-template-columns:1fr;gap:3rem}.skills-grid{grid-template-columns:1fr 1fr}.missions-grid{grid-template-columns:1fr}footer{flex-direction:column;gap:1rem;text-align:center}}
-@media(max-width:600px){.skills-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.nav-links{display:none}.hero-metrics{flex-wrap:wrap;width:100%}.about-layout{grid-template-columns:1fr;gap:3rem}.missions-grid{grid-template-columns:1fr}.skills-section-inner{grid-template-columns:1fr;gap:2rem}.skills-nav{flex-direction:row;flex-wrap:wrap;position:static}.skill-nav-btn{width:auto;flex:1;min-width:130px}footer{flex-direction:column;gap:1rem;text-align:center}}
+@media(max-width:600px){.skills-nav{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -217,24 +235,24 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
   <div class="timeline reveal rd1">
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-date">2025 - 2026</div>
+      <div class="timeline-date">2025 — 2026</div>
       <div class="timeline-title">BTS SIO option SLAM — 2ème année</div>
-      <div class="timeline-place">Valenciennes</div>
-      <div class="timeline-desc">Approfondissement du développement d'applications, projets professionnels, préparation à l'examen et stages en entreprise.</div>
+      <div class="timeline-place">📍 Valenciennes</div>
+      <div class="timeline-desc">Approfondissement du développement d'applications orienté objet, gestion de projets professionnels en équipe, développement web et mobile avancé, préparation aux épreuves et stage en entreprise de 6 semaines.</div>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <div class="timeline-date">2024 - 2025</div>
+      <div class="timeline-date">2024 — 2025</div>
       <div class="timeline-title">BTS SIO option SLAM — 1ère année</div>
-      <div class="timeline-place">Valenciennes</div>
-      <div class="timeline-desc">Découverte des fondamentaux : algorithmique, programmation, bases de données, réseaux et gestion de projet.</div>
+      <div class="timeline-place">📍 Valenciennes</div>
+      <div class="timeline-desc">Découverte des fondamentaux de la programmation (algorithmique, Python, Java), conception et requêtes de bases de données MySQL, initiation au développement web HTML/CSS/PHP, notions de réseaux et première immersion en entreprise.</div>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-date">2024</div>
-      <div class="timeline-title">Baccalauréat</div>
-      <div class="timeline-place">Valenciennes</div>
-      <div class="timeline-desc">Obtention du baccalauréat Profesionnel Système numerique option C au lycee Pierre Joseph Fontaine à Anzin.</div>
+      <div class="timeline-title">Baccalauréat Professionnel — Systèmes Numériques option C</div>
+      <div class="timeline-place">📍 Lycée Pierre Joseph Fontaine — Anzin</div>
+      <div class="timeline-desc">Formation technique axée sur l'électronique et les systèmes numériques. Acquisition des bases en électricité, câblage réseau et architecture matérielle, avec des travaux pratiques sur des équipements industriels réels.</div>
     </div>
   </div>
 </section>
@@ -247,30 +265,47 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
   </div>
   <div class="missions-grid">
 
+    <!-- MISSION 1 — Stage -->
     <div class="mission-card reveal">
-      <div class="mission-icon">🏢</div>
-      <div class="mission-type">Stage</div>
-      <div class="mission-title">Application de gestion</div>
-      <div class="mission-company">Entreprise · Valenciennes</div>
-      <div class="mission-desc">Découverte de l'environnement professionnel, participation au changement et maintenance de bases de données.</div>
-      <div class="mission-stack"><span class="m-tag">PHP</span><span class="m-tag">MySQL</span><span class="m-tag">HTML/CSS</span></div>
+      <div class="mission-header">
+        <div class="mission-icon-wrap stage">🏢</div>
+        <div class="mission-meta">
+          <div class="mission-type stage">Stage professionnel</div>
+          <div class="mission-title">Gestion &amp; maintenance applicative</div>
+          <div class="mission-company">Entreprise · Valenciennes · 6 semaines</div>
+        </div>
+      </div>
+      <div class="mission-highlights">
+        <div class="highlight-row"><span class="highlight-icon">🔧</span><span>Maintenance corrective et évolutive d'une application web de gestion interne, résolution de bugs signalés par les utilisateurs.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">🗄️</span><span>Participation à la <strong>restructuration de la base de données</strong> : ajout de tables, optimisation de requêtes SQL et migration de données.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">🤝</span><span>Découverte de l'environnement professionnel IT, travail en équipe avec les développeurs seniors et respect des procédures internes.</span></div>
+      </div>
+      <div class="mission-stack"><span class="m-tag">PHP</span><span class="m-tag">MySQL</span><span class="m-tag">HTML/CSS</span><span class="m-tag">phpMyAdmin</span></div>
       <div class="mission-screenshots">
-        <!-- PROJET 1 — Ajoute tes screens dans images/projet1/ -->
         <div class="ss-wrapper"><img src="images/projet1/screen1.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
         <div class="ss-wrapper"><img src="images/projet1/screen2.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
         <div class="ss-wrapper"><img src="images/projet1/screen3.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
       </div>
     </div>
 
+    <!-- MISSION 2 — Congés GSB -->
     <div class="mission-card reveal rd1">
-      <div class="mission-icon">💻</div>
-      <div class="mission-type">Projet scolaire</div>
-      <div class="mission-title">Application de gestion des congés</div>
-      <div class="mission-company">Projet BTS SIO</div>
-      <div class="mission-desc">Application Windows Java permettant la gestion des demandes de congé des praticiens GSB. Deux rôles : praticien (soumettre une demande) et administrateur RH (accepter/refuser). Connexion sécurisée, notifications à la connexion, vérification automatique du solde de congés.</div>
-      <div class="mission-stack"><span class="m-tag">Java</span><span class="m-tag">MySQL</span><span class="m-tag">Swing</span><span class="m-tag">JDBC</span></div>
+      <div class="mission-header">
+        <div class="mission-icon-wrap java">☕</div>
+        <div class="mission-meta">
+          <div class="mission-type scolaire">Projet scolaire</div>
+          <div class="mission-title">Application de gestion des congés — GSB</div>
+          <div class="mission-company">BTS SIO · Projet individuel · Java Desktop</div>
+        </div>
+      </div>
+      <div class="mission-highlights">
+        <div class="highlight-row"><span class="highlight-icon">👥</span><span><strong>Double profil utilisateur :</strong> les praticiens soumettent leurs demandes, les administrateurs RH les valident ou les refusent.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">🔐</span><span>Système d'<strong>authentification sécurisée</strong> avec vérification des identifiants en base de données via JDBC.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">📊</span><span>Contrôle automatique du <strong>solde de congés disponible</strong>, notifications à la connexion et historique des demandes.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">🖥️</span><span>Interface graphique desktop développée avec <strong>Java Swing</strong>, navigation fluide entre les écrans.</span></div>
+      </div>
+      <div class="mission-stack"><span class="m-tag">Java</span><span class="m-tag">Swing</span><span class="m-tag">MySQL</span><span class="m-tag">JDBC</span></div>
       <div class="mission-screenshots">
-        <!-- PROJET 2 — Ajoute tes screens dans images/projet2/ -->
         <div class="ss-wrapper"><img src="images/projet2/screen1.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
         <div class="ss-wrapper"><img src="images/projet2/screen2.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
         <div class="ss-wrapper"><img src="images/projet2/screen3.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
@@ -281,30 +316,48 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
       </div>
     </div>
 
+    <!-- MISSION 3 — Portfolio -->
     <div class="mission-card reveal rd2">
-      <div class="mission-icon">🌐</div>
-      <div class="mission-type">Projet scolaire</div>
-      <div class="mission-title">Site web portfolio</div>
-      <div class="mission-company">Projet BTS SIO</div>
-      <div class="mission-desc">Création de ce portfolio pour présenter mes compétences et mes réalisations dans le cadre de ma recherche de stage et d'emploi.</div>
-      <div class="mission-stack"><span class="m-tag">HTML</span><span class="m-tag">CSS</span><span class="m-tag">JavaScript</span></div>
+      <div class="mission-header">
+        <div class="mission-icon-wrap web">🌐</div>
+        <div class="mission-meta">
+          <div class="mission-type scolaire">Projet scolaire</div>
+          <div class="mission-title">Portfolio professionnel — ce site</div>
+          <div class="mission-company">BTS SIO · Projet personnel · Site statique</div>
+        </div>
+      </div>
+      <div class="mission-highlights">
+        <div class="highlight-row"><span class="highlight-icon">🎨</span><span>Conception et intégration d'un <strong>design moderne dark mode</strong> from scratch, sans framework CSS, en pur HTML/CSS/JS.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">⚡</span><span>Animations au scroll, effets de parallaxe sur les "orbs" et transitions fluides pour une <strong>expérience utilisateur soignée</strong>.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">📱</span><span>Site entièrement <strong>responsive</strong>, adapté aux mobiles, tablettes et ordinateurs de bureau.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">🖼️</span><span>Lightbox pour visualiser les captures de projets, intégrée <strong>sans librairie externe</strong>.</span></div>
+      </div>
+      <div class="mission-stack"><span class="m-tag">HTML5</span><span class="m-tag">CSS3</span><span class="m-tag">JavaScript</span></div>
       <div class="mission-screenshots">
-        <!-- PROJET 3 — Ajoute tes screens dans images/projet3/ -->
         <div class="ss-wrapper"><img src="images/projet3/screen1.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
         <div class="ss-wrapper"><img src="images/projet3/screen2.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
         <div class="ss-wrapper"><img src="images/projet3/screen3.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
       </div>
     </div>
 
+    <!-- MISSION 4 — Mobile -->
     <div class="mission-card reveal rd3">
-      <div class="mission-icon">📱</div>
-      <div class="mission-type">Projet scolaire</div>
-      <div class="mission-title">Application mobile</div>
-      <div class="mission-company">Projet BTS SIO</div>
-      <div class="mission-desc">Développement d'une application mobile dans le cadre des travaux pratiques, avec connexion à une API REST.</div>
-      <div class="mission-stack"><span class="m-tag">Flutter</span><span class="m-tag">Dart</span><span class="m-tag">API REST</span></div>
+      <div class="mission-header">
+        <div class="mission-icon-wrap mobile">📱</div>
+        <div class="mission-meta">
+          <div class="mission-type scolaire">Projet scolaire</div>
+          <div class="mission-title">Application mobile cross-platform</div>
+          <div class="mission-company">BTS SIO · Projet TP · Flutter / Dart</div>
+        </div>
+      </div>
+      <div class="mission-highlights">
+        <div class="highlight-row"><span class="highlight-icon">🔗</span><span>Connexion à une <strong>API REST externe</strong> pour récupérer et afficher des données dynamiques en temps réel.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">📲</span><span>Application compilée pour <strong>Android et iOS</strong> depuis une seule base de code grâce au framework Flutter.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">🧩</span><span>Architecture en <strong>widgets réutilisables</strong>, gestion de l'état et navigation entre plusieurs écrans.</span></div>
+        <div class="highlight-row"><span class="highlight-icon">🎯</span><span>Première expérience mobile : apprentissage de <strong>Dart</strong> et des bonnes pratiques Flutter.</span></div>
+      </div>
+      <div class="mission-stack"><span class="m-tag">Flutter</span><span class="m-tag">Dart</span><span class="m-tag">API REST</span><span class="m-tag">JSON</span></div>
       <div class="mission-screenshots">
-        <!-- PROJET 4 — Ajoute tes screens dans images/projet4/ -->
         <div class="ss-wrapper"><img src="images/projet4/screen1.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
         <div class="ss-wrapper"><img src="images/projet4/screen2.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
         <div class="ss-wrapper"><img src="images/projet4/screen3.png" class="mission-screenshot-img" onclick="openLightbox(this.src)" onerror="this.parentElement.style.display='none'"></div>
@@ -314,42 +367,213 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
   </div>
 </section>
 
+<!-- ══ COMPÉTENCES — VERSION ONGLETS ══ -->
 <section id="competences">
   <div class="reveal">
     <div class="sec-eyebrow">Compétences</div>
     <h2>Mes compétences<br><em>techniques.</em></h2>
-    <div class="sec-desc">Les technologies et outils que j'ai appris et pratiqués durant ma formation.</div>
+    <div class="sec-desc">Technologies et outils appris durant ma formation. Clique sur une catégorie pour voir le détail et le niveau.</div>
   </div>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon blue">💻</div><div class="skill-name">Langages de programmation</div>
-      <div class="skill-tags"><span class="s-tag">Java</span><span class="s-tag">Python</span><span class="s-tag">PHP</span><span class="s-tag">JavaScript</span><span class="s-tag">C#</span></div>
-      <div class="skill-level-row"><span class="skill-level-label">Intermédiaire</span><div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div></div>
+
+  <div class="skills-section-inner reveal rd1">
+
+    <!-- NAV GAUCHE -->
+    <div class="skills-nav">
+      <button class="skill-nav-btn active" onclick="switchSkill('langages', this)">
+        <div class="skill-nav-icon">💻</div>Langages
+      </button>
+      <button class="skill-nav-btn" onclick="switchSkill('web', this)">
+        <div class="skill-nav-icon">🌐</div>Web
+      </button>
+      <button class="skill-nav-btn" onclick="switchSkill('bdd', this)">
+        <div class="skill-nav-icon">🗄️</div>Bases de données
+      </button>
+      <button class="skill-nav-btn" onclick="switchSkill('outils', this)">
+        <div class="skill-nav-icon">🛠️</div>Outils &amp; IDE
+      </button>
+      <button class="skill-nav-btn" onclick="switchSkill('systemes', this)">
+        <div class="skill-nav-icon">🖥️</div>Systèmes &amp; Réseaux
+      </button>
+      <button class="skill-nav-btn" onclick="switchSkill('gestion', this)">
+        <div class="skill-nav-icon">📋</div>Gestion de projet
+      </button>
     </div>
-    <div class="skill-card reveal rd1">
-      <div class="skill-icon teal">🌐</div><div class="skill-name">Développement Web</div>
-      <div class="skill-tags"><span class="s-tag">HTML5</span><span class="s-tag">CSS3</span><span class="s-tag">JavaScript</span><span class="s-tag">Bootstrap</span></div>
-      <div class="skill-level-row"><span class="skill-level-label">Intermédiaire</span><div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div></div>
-    </div>
-    <div class="skill-card reveal rd2">
-      <div class="skill-icon purple">🗄</div><div class="skill-name">Bases de données</div>
-      <div class="skill-tags"><span class="s-tag">MySQL</span><span class="s-tag">SQL Server</span><span class="s-tag">phpMyAdmin</span></div>
-      <div class="skill-level-row"><span class="skill-level-label">Intermédiaire</span><div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon orange">🛠</div><div class="skill-name">Outils &amp; IDE</div>
-      <div class="skill-tags"><span class="s-tag">VS Code</span><span class="s-tag">IntelliJ</span><span class="s-tag">Eclipse</span><span class="s-tag">Git</span></div>
-      <div class="skill-level-row"><span class="skill-level-label">Intermédiaire</span><div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div></div>
-    </div>
-    <div class="skill-card reveal rd1">
-      <div class="skill-icon pink">🖥</div><div class="skill-name">Systèmes &amp; Réseaux</div>
-      <div class="skill-tags"><span class="s-tag">Windows</span><span class="s-tag">Linux</span><span class="s-tag">TCP/IP</span><span class="s-tag">VMware</span></div>
-      <div class="skill-level-row"><span class="skill-level-label">Débutant</span><div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div></div>
-    </div>
-    <div class="skill-card reveal rd2">
-      <div class="skill-icon green">📋</div><div class="skill-name">Gestion de projet</div>
-      <div class="skill-tags"><span class="s-tag">Méthode Agile</span><span class="s-tag">Trello</span><span class="s-tag">UML</span><span class="s-tag">Merise</span></div>
-      <div class="skill-level-row"><span class="skill-level-label">Débutant</span><div class="skill-dots"><span class="sdot sdot-on"></span><span class="sdot sdot-on"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span><span class="sdot sdot-off"></span></div></div>
+
+    <!-- PANELS DROITE -->
+    <div>
+
+      <div class="skill-panel active" id="panel-langages">
+        <div class="skill-panel-title">Langages de programmation</div>
+        <div class="skill-panel-desc">Du scripting en Python à la POO en Java, en passant par PHP côté serveur et C# pour les applications Windows — plusieurs paradigmes abordés durant la formation.</div>
+        <div class="skill-items">
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Java</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="65" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">POO</span><span class="sr-tag">Swing</span><span class="sr-tag">JDBC</span><span class="sr-tag">Héritage &amp; interfaces</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">PHP</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="55" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Scripts serveur</span><span class="sr-tag">Formulaires</span><span class="sr-tag">Sessions</span><span class="sr-tag">PDO</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Python</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="50" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Scripts</span><span class="sr-tag">Algorithmique</span><span class="sr-tag">Manipulation de fichiers</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">JavaScript</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="50" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">DOM</span><span class="sr-tag">Événements</span><span class="sr-tag">Fetch API</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">C#</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="28" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Bases POO</span><span class="sr-tag">Exercices pratiques</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Dart / Flutter</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="30" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Widgets</span><span class="sr-tag">Navigation</span><span class="sr-tag">Appel API</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="panel-web">
+        <div class="skill-panel-title">Développement Web</div>
+        <div class="skill-panel-desc">Intégration front-end, structuration sémantique et rendu dynamique côté serveur — maîtrisés à travers plusieurs projets concrets.</div>
+        <div class="skill-items">
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">HTML5</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="70" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Sémantique</span><span class="sr-tag">Formulaires</span><span class="sr-tag">Accessibilité</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">CSS3</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="65" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Flexbox</span><span class="sr-tag">Grid</span><span class="sr-tag">Animations</span><span class="sr-tag">Responsive</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Bootstrap</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="55" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Composants</span><span class="sr-tag">Grille responsive</span><span class="sr-tag">Utilitaires</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">PHP (côté serveur)</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="50" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Pages dynamiques</span><span class="sr-tag">Authentification</span><span class="sr-tag">CRUD</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="panel-bdd">
+        <div class="skill-panel-title">Bases de données</div>
+        <div class="skill-panel-desc">Conception, modélisation et requêtage de bases relationnelles, utilisées dans tous mes projets applicatifs.</div>
+        <div class="skill-items">
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">MySQL</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="65" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">SELECT / JOIN</span><span class="sr-tag">INSERT / UPDATE</span><span class="sr-tag">Clés étrangères</span><span class="sr-tag">Index</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">SQL Server</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="30" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Requêtes de base</span><span class="sr-tag">Exercices pratiques</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">phpMyAdmin</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="60" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Administration</span><span class="sr-tag">Import / Export</span><span class="sr-tag">Gestion des tables</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Modélisation (MCD / MLD)</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="55" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Merise</span><span class="sr-tag">Entités / Relations</span><span class="sr-tag">Normalisation</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="panel-outils">
+        <div class="skill-panel-title">Outils &amp; environnements de développement</div>
+        <div class="skill-panel-desc">Les outils du quotidien d'un développeur : écriture du code, versionnage et collaboration sur des projets en équipe.</div>
+        <div class="skill-items">
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">VS Code</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="70" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Extensions</span><span class="sr-tag">Raccourcis</span><span class="sr-tag">Débogage intégré</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">IntelliJ IDEA</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="60" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Java</span><span class="sr-tag">Refactoring</span><span class="sr-tag">Run / Debug</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Git</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="35" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Commit / Push</span><span class="sr-tag">Branches</span><span class="sr-tag">GitHub</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Eclipse</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="30" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Java</span><span class="sr-tag">Projets simples</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="panel-systemes">
+        <div class="skill-panel-title">Systèmes &amp; Réseaux</div>
+        <div class="skill-panel-desc">Notions acquises en cours et renforcées par le bac Systèmes Numériques : compréhension de l'environnement dans lequel s'exécutent les applications.</div>
+        <div class="skill-items">
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Windows (administration)</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="55" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Gestion des droits</span><span class="sr-tag">Services</span><span class="sr-tag">Partages réseau</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Linux (Ubuntu)</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="30" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Terminal</span><span class="sr-tag">Commandes de base</span><span class="sr-tag">Permissions</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Réseaux TCP/IP</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="35" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Adressage IP</span><span class="sr-tag">Masques</span><span class="sr-tag">Modèle OSI</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">VMware / VirtualBox</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="28" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Création de VM</span><span class="sr-tag">Snapshots</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-panel" id="panel-gestion">
+        <div class="skill-panel-title">Gestion de projet</div>
+        <div class="skill-panel-desc">Méthodes et outils appris pour organiser le travail en équipe, planifier les tâches et documenter les projets logiciels.</div>
+        <div class="skill-items">
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Méthode Agile / Scrum</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="35" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Sprints</span><span class="sr-tag">User stories</span><span class="sr-tag">Rétrospective</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Trello</span><span class="skill-row-level level-intermediaire">Intermédiaire</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="55" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Tableaux Kanban</span><span class="sr-tag">Listes de tâches</span><span class="sr-tag">Labels</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">UML</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="35" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">Cas d'usage</span><span class="sr-tag">Diagrammes de classes</span><span class="sr-tag">Séquences</span></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-row-top"><span class="skill-row-name">Merise</span><span class="skill-row-level level-debutant">Débutant</span></div>
+            <div class="skill-bar-bg"><div class="skill-bar-fill" data-w="40" style="width:0%"></div></div>
+            <div class="skill-row-tags"><span class="sr-tag">MCD</span><span class="sr-tag">MLD</span><span class="sr-tag">Dictionnaire de données</span></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -383,21 +607,31 @@ footer{position:relative;z-index:1;padding:2rem 5vw;border-top:1px solid var(--b
   <img id="lightbox-img" src="" alt="">
 </div>
 
-
-
-
 <script>
-function openLightbox(src) {
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox').classList.add('active');
+function openLightbox(src){document.getElementById('lightbox-img').src=src;document.getElementById('lightbox').classList.add('active')}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active')}
+
+function animateBars(panelId){
+  document.querySelectorAll('#'+panelId+' .skill-bar-fill').forEach(bar=>{
+    bar.style.width='0%';
+    setTimeout(()=>{bar.style.width=bar.dataset.w+'%'},60);
+  });
 }
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('active');
+
+function switchSkill(id, btn){
+  document.querySelectorAll('.skill-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.skill-nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  btn.classList.add('active');
+  animateBars('panel-'+id);
 }
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+window.addEventListener('load',()=>setTimeout(()=>animateBars('panel-langages'),400));
 </script>
 </body>
 </html>
